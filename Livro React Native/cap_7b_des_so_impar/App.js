@@ -1,14 +1,12 @@
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import ChecaNumero from './components/ChecaNumero';
+import { StyleSheet, Text, View } from 'react-native';
+import Evento from './components/Evento';
 
-export default class App extends React.Component {
-  render() {
-    return (
-    <ChecaNumero numero={7} />
-    );
-  }
+export default function App() {
+  return (
+    <Evento />
+  );
 }
 
 
