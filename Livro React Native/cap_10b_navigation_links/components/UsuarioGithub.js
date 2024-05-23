@@ -19,18 +19,34 @@ class UsuarioGithub extends React.Component {
       .catch(err => this.setState({ dados: { err } }))
   }
 
+  formaDadosDoUsuario() {
+    if (this.state.dados.name !== undefined) {
+      const { name, public_repos, followers } = this.state.dados;
+      return (
+        <>
+          <Text style={estilos.font30}>Dados do Usuário</Text>
+          <Text>Nome: {name}</Text>
+          <Text>Repositórios: {public_repos}</Text>
+          <Text>Seguidores: {followers}</Text>
+        </>
+      )
+    } else {
+      return (
+        <Text style={estilos.font30}>
+          Este usuário não existe!
+        </Text>
+      )
+    }
+  }
+
   componentDidMount() {
     this.fetchDados();
   }
 
   render() {
-    const { name, public_repos, followers } = this.state.dados;
     return (
       <View style={estilos.container}>
-        <Text style={estilos.font30}>Dados do Usuário</Text>
-        <Text>Nome: {name}</Text>
-        <Text>Repositórios: {public_repos}</Text>
-        <Text>Seguidores: {followers}</Text>
+        {this.formaDadosDoUsuario()}
         <View>
           <TextInput
             style={estilos.input}
@@ -46,7 +62,7 @@ class UsuarioGithub extends React.Component {
           />
         </View>
       </View>
-    );
+    )
   }
 }
 
